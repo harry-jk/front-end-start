@@ -7,13 +7,13 @@ function movePage(){
 }
 
 function displayItems() {
-    var list = [];
+    var slicedList = [];
     var start = (nowPage-1)*3;
     var end = start+3;
     if(end >= todayPhoto.length) end = todayPhoto.length-1;
-    list = todayPhoto.slice(start, end);
+    slicedList = todayPhoto.slice(start, end);
     var html = tmpl(itemsTpl, {
-        list : list
+        list : slicedList
     });
 
     document.getElementById("items").innerHTML = html;
