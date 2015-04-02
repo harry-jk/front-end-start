@@ -10,7 +10,7 @@ function displayItems() {
     var slicedList = [];
     var start = (nowPage-1)*3;
     var end = start+3;
-    if(end >= todayPhoto.length) end = todayPhoto.length-1;
+    if(end >= todayPhoto.length) end = todayPhoto.length;
     slicedList = todayPhoto.slice(start, end);
     var html = tmpl(itemsTpl, {
         list : slicedList
