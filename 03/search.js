@@ -15,7 +15,7 @@ var itemsForm = $("items");
 var moreForm = $("more");
 
 var itemsTpl = $("itemsTpl").innerHTML;
-var moreBtn = $("button");
+var moreBtn = document.createElement("button");
 moreBtn.innerHTML = "더보기";
 
 $("items").innerHTML = "";
