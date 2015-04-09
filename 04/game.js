@@ -76,6 +76,7 @@ function startGame() {
     score = 0;
     miss = 0;
     level = 1;
+    score_form.innerHTML = score;
     level_form.innerHTML = level;
     miss_limit_form.innerHTML = Math.ceil((10/level)+1);
     positionChange();
