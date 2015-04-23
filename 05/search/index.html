@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <title>검색서비스</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="seach.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>검색 서비스</h1>
+
+    <form  class="form-inline">
+        <div class="input-group">
+            <input type="text" id="searchText" class="form-control" placeholder="검색어를 넣어주세요">
+            <div class="input-group-addon">
+                <button class="btn btn-primary btn-xs" id="searchBtn" >
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+
+    </form>
+
+
+    <ul  class="nav nav-tabs" style="margin-top:30px">
+        <li id="boardTab" class="active"><a href="#board">게시판</a></li>
+        <li id="videoTab"><a href="#video">동영상</a></li>
+        <li id="imageTab"><a href="#image">이미지</a></li>
+        <li id="tipTab"><a href="#tip">팁</a></li>
+        <li id="blogTab"><a href="#blog">블로그</a></li>
+        <li id="cafeTab"><a href="#cafe">카페</a></li>
+    </ul>
+
+    <div class="mov-panel" style="margin-top:30px">
+        <ul id="contents">
+        </ul>
+    </div>
+
+    <img src="res/loader.gif" id="loader">
+    <button id="moreBtn" class="btn btn-default btn-block btn-primary">더보기</button>
+
+    <script id="_template" type="text/template">
+        <% for(var i=0; i<items.length; i++) {
+            if(items[i].title.trim().length == 0) continue;
+        %>
+        <li>
+            <% if(items[i].thumbnail) { %><img src="<%= items[i].thumbnail %>" width="100" alt="" class="img-thumbnail"> <% } %>
+            <a href="<%= items[i].link %>"><%= items[i].title.replace(/&lt;/g, '<').replace(/&gt;/g, '>')%></a>
+        </li>
+        <% } %>
+    </script>
+
+    <script src="http://code.jquery.com/jquery-1.8.1.min.js"></script>
+    <script src="util.js"></script>
+    <script src="tab.js"></script>
+    <script src="search.js"></script>
+</div>
+</body>
+</html>
