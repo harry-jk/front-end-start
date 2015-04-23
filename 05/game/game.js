@@ -18,6 +18,13 @@ var interval = null;
 var target = null;
 var samePosition = false;
 
+function updateGameInfo() {
+    score_form.html(score);
+    level_form.html(level);
+    miss_form.html(miss);
+    miss_limit_form.html(Math.ceil((10/level)+1));
+}
+
 function positionChange() {
     var x = Math.random()*(body.outerWidth(true)-sizeXY);
     var y = Math.random()*(body.outerWidth(true)-score_wrap.outerHeight(true)-sizeXY)+score_wrap.outerHeight(true);
@@ -27,7 +34,7 @@ function positionChange() {
         left : x+'px',
         top : y+'px'
     });
-    miss_form.html(miss);
+    updateGameInfo();
     ++miss;
     samePosition = false;
     levelControl();
@@ -39,22 +46,8 @@ function levelControl(){
     }
 
     if(score/level > Math.ceil((Math.log(level+1)*10))){
-        ++level;
-        level_form.html(level);
-
-        clearInterval(interval);
-        var speed = 2000-(score*level);
-        if(speed < 1000) speed = 1000;
-        interval = setInterval(positionChange, speed);
-        miss_limit_form.html(Math.ceil((10/level)+1));
-
-        if(sizeXY > 10){
-            --sizeXY;
-            target.css({
-                width : sizeXY,
-                height : sizeXY
-            });
-        }
+        levelUp();
+        updateGameInfo();
     }
 }
 
@@ -82,12 +75,10 @@ function startGame() {
     score = 0;
     miss = 0;
     level = 1;
-    score_form.html(score);
-    level_form.html(level);
-    miss_limit_form.html(Math.ceil((10/level)+1));
+    updateGameInfo();
     positionChange();
 
-    var buttons = score_wrap.children('[name=button]');
+    var buttons = score_wrap.children('button');
     buttons.each(function(index, el) {
         el.remove();
     });
@@ -99,12 +90,28 @@ function startGame() {
 function gameover(){
     clearInterval(interval);
     target.remove();
-    var start = $('button');
-    start.innerHTML = '시작';
+    var start = $('<button></button>');
+    start.html('시작');
     score_wrap.append(start);
     start.click(function(){
         startGame();
     });
+}
+
+function levelUp() {
+    ++level;
+    clearInterval(interval);
+    var speed = 2000-(score*level);
+    if(speed < 1000) speed = 1000;
+    interval = setInterval(positionChange, speed);
+
+    if(sizeXY > 10){
+        --sizeXY;
+        target.css({
+            width : sizeXY,
+            height : sizeXY
+        });
+    }
 }
 
 
