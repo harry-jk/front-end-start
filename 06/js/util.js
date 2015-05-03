@@ -23,9 +23,6 @@ function checkDelete($listDom, event) {
     return;
   }
 
-  if(event.target.className !== 'delete') {
-    return;
-  }
   var $deleteBtn = $(event.target);
 
   //버튼의 상위엘리먼트 <li> 제거

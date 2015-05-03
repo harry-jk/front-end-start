@@ -12,7 +12,7 @@ console.log('todos.js');
     $todoStringField.on('keyup', addTodo.bind(null, $todoStringField, todoTemplateHtml, $listDom));
 
     ////삭제버튼 이벤트 잡기 위해 상위에서 이벤트 listen 하기
-    $listDom.on('click', checkDelete.bind(null, $listDom));
+    $listDom.on('click', '.delete',checkDelete.bind(null, $listDom));
 
     ////처음 로딩시에 기존에 저장된 데이터 가져와서 보여주기
     $listDom.html(loadData());
