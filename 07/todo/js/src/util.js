@@ -7,6 +7,10 @@
     uniqId: function() {
       return new Date().getTime();
     },
+    getDate: function() {
+      var date = new Date();
+      return date.toISOString().substring(0, 10);
+    },
     storage : {
       load: function () {
         console.log('storage.load()');

@@ -22,6 +22,7 @@
       var todo = $.extend({}, app.model, {
         id: app.util.uniqId(),
         title: fieldValue,
+        date: app.util.getDate(),
         isDone: false
       });
 

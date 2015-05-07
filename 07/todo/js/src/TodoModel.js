@@ -4,6 +4,7 @@
 
     id: '',
     title: '',
+    date: '',
     isDone: false
 
   };
