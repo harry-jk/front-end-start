@@ -1,0 +1,42 @@
+#wrap
+{
+    width: 800px;
+    margin: 0 auto;
+}
+
+#head
+{
+    text-align: center;
+}
+
+#score
+{
+    color: red;
+}
+
+#game
+{
+
+}
+
+#card
+{
+    float: left;
+    width: 120px;
+    height: 120px;
+    margin: 20px;
+    font-size: 26pt;
+    text-align: center;
+    align-content: center;
+    background-color: cornflowerblue;
+}
+
+#card.open
+{
+    background: none;
+}
+
+#card.run
+{
+
+}
