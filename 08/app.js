@@ -9,7 +9,7 @@
 
     var preCard;
 
-    function suffle() {
+    function shuffle() {
         var tmp = [];
         tmp = tmp.concat(cards).concat(cards);
         return tmp.sort(function(r, l) {
@@ -19,13 +19,13 @@
 
     function makeBoard() {
         gameBoard.children().remove();
-        makeCards(suffle());
+        makeCards(shuffle());
         scoreBoard.text(score);
     }
 
-    function makeCards(sufCards) {
-        for(var i = 0; i < sufCards.length; ++i) {
-            var card = makeCard(sufCards[i]);
+    function makeCards(shufCards) {
+        for(var i = 0; i < shufCards.length; ++i) {
+            var card = makeCard(shufCards[i]);
             gameBoard.append(card);
         }
     }
