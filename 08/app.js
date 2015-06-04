@@ -19,11 +19,11 @@
 
     function makeBoard() {
         gameBoard.children().remove();
-        makeCardRow(suffle());
+        makeCards(suffle());
         scoreBoard.text(score);
     }
 
-    function makeCardRow(sufCards) {
+    function makeCards(sufCards) {
         for(var i = 0; i < sufCards.length; ++i) {
             var card = makeCard(sufCards[i]);
             gameBoard.append(card);
