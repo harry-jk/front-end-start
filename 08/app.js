@@ -10,23 +10,22 @@
     var preCard;
 
     function suffle() {
-        cards = cards.sort(function(r, l) {
-            return (Math.random() * 10) > 5;
+        var tmp = [];
+        tmp = tmp.concat(cards).concat(cards);
+        return tmp.sort(function(r, l) {
+            return (Math.random() * 2) > 1;
         });
     }
 
     function makeBoard() {
         gameBoard.children().remove();
-        for(var i = 0; i < 2; ++i) {
-            suffle();
-            makeCardRow();
-        }
+        makeCardRow(suffle());
         scoreBoard.text(score);
     }
 
-    function makeCardRow() {
-        for(var i = 0; i < cards.length; ++i) {
-            var card = makeCard(cards[i]);
+    function makeCardRow(sufCards) {
+        for(var i = 0; i < sufCards.length; ++i) {
+            var card = makeCard(sufCards[i]);
             gameBoard.append(card);
         }
     }
