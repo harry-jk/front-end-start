@@ -35,16 +35,21 @@ function makeCardRow() {
 
 function makeCard(num) {
     var card = $('<div>');
+    var span = $('<span>')
+    var cover = $('<div>');
     card.attr('id', 'card');
-    card.addClass('run');
-    card.text(num);
+    cover.addClass('run');
+    span.text(num);
+
+    card.append(span);
+    card.append(cover);
     return card;
 }
 
 
 function checkMatch(preCard, postCard) {
     if(preCard == null || postCard == null) return false;
-    return preCard.text() === postCard.text();
+    return preCard.parent().children('span').text() === postCard.parent().children('span').text();
 }
 
 function startGame() {
@@ -63,7 +68,7 @@ function startGame() {
                 card.removeClass('run');
                 ++score;
                 scoreBoard.text(score);
-                if(gameBoard.children('.run').length === 0) endGame();
+                if(gameBoard.children().children('.run').length === 0) endGame();
             } else {
                 var pre = preCard;
                 var post = card;

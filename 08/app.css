@@ -27,16 +27,24 @@
     margin: 20px;
     font-size: 26pt;
     text-align: center;
-    align-content: center;
+}
+
+#card span
+{
+    position: absolute;
+}
+
+#card div
+{
+    position: relative;
+    float: left;
+    width: 100%;
+    height: 100%;
     background-color: cornflowerblue;
 }
 
-#card.open
+#card div.open
 {
     background: none;
 }
 
-#card.run
-{
-
-}
