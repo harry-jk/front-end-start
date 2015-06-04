@@ -10,7 +10,7 @@
     var preCard;
 
     function suffle() {
-        return cards.sort(function(r, l) {
+        cards = cards.sort(function(r, l) {
             return (Math.random() * 10) > 5;
         });
     }
